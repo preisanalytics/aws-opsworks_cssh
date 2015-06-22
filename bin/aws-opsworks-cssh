@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+
+require 'aws/opsworks_cssh'
+require 'optparse'
+
+
+
+
+options = {:ip => "public"}
+opts = OptionParser.new do |opts|
+  opts.banner = "Usage: example.rb [options]"
+
+  opts.separator ""
+  opts.separator "Specific options:"
+
+  # Mandatory argument.
+  opts.on("-u", "--username USER",
+          "Require the USER before executing your script") do |user|
+    options[:user] = user
+  end
+  opts.on("-s", "--stackname STACK",
+          "Require the STACK before executing the script") do |stack|
+    options[:stack] = stack
+  end
+
+  opts.on("-p","--private",
+          "Optional. Specify the ipAddress to be public or private") do |ip|
+    options[:ip] = "private"
+  end
+
+
+  opts.on_tail("-h","--help","Usage for AWS cssh gem script") do
+    puts opts
+    exit
+  end
+end
+
+opts.parse!
+unless options[:stack]
+puts opts
+exit 1
+end
+puts "Executing cssh for user #{options[:user]} stack #{options[:stack]} "
+
+
+Aws::OpsworksCssh.start_opsworks_cssh(options[:stack],options[:user])
