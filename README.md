@@ -20,16 +20,18 @@ Or install it yourself as:
 
 Before starting use, a credentials file needs to be setup along with a config which look like this:
 
-~/.aws/config
-[default]
-output = json
-region = (Eg. us-east-1)
+    ~/.aws/config
+
+    [default]
+    output = json
+    region = (Eg. us-east-1)
 
 
-~/.aws/config
-[default]
-aws_access_key_id = (20 char key)
-aws_secret_access_key = (40 char secret)  
+    ~/.aws/config
+
+    [default]
+    aws_access_key_id = (20 char key)
+    aws_secret_access_key = (40 char secret)
 
 
 
