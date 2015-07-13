@@ -18,6 +18,20 @@ Or install it yourself as:
 
 ## Usage
 
+Before starting use, a credentials file needs to be setup along with a config which look like this:
+
+~/.aws/config
+[default]
+output = json
+region = (Eg. us-east-1)
+
+~/.aws/config
+[default]
+aws_access_key_id = (20 char key)
+aws_secret_access_key = (40 char secret)
+
+
+
 Need to provide a username and stack. It picks up the aws key and aws secret from your ".aws" config file.
 
 Usage: aws-opsworks_cssh -u "USERNAME" -s "STACKNAME"
