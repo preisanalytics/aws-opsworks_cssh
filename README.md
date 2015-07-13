@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-Before starting use, a credentials file needs to be setup along with a config which look like this:
+Before starting use, a config and credentials file needs to be setup along with a config which look like this:
 
     ~/.aws/config
 
@@ -27,7 +27,7 @@ Before starting use, a credentials file needs to be setup along with a config wh
     region = (Eg. us-east-1)
 
 
-    ~/.aws/config
+    ~/.aws/credentials
 
     [default]
     aws_access_key_id = (20 char key)
