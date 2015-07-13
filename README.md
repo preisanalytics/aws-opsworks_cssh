@@ -1,6 +1,6 @@
 # Aws::OpsworksCssh
 
-TODO: Write a gem description
+This gem can be used to ssh into all the instances of a given OpsWorks stack (cssh into all instances), by specifying the stack name and the user name.  
 
 ## Installation
 
@@ -37,7 +37,12 @@ Before starting use, a config and credentials file needs to be setup along with 
 
 Need to provide a username and stack. It picks up the aws key and aws secret from your ".aws" config file.
 
-Usage: aws-opsworks_cssh -u "USERNAME" -s "STACKNAME"
+Usage:
+
+    $ aws-opsworks_cssh -u "USERNAME" -s "STACKNAME" -p
+
+By default it uses public IP addresses.
+If -p is passed along as an option then it would "force_private" and take private IP addresses for the instances.
 
 
 ## Contributing
