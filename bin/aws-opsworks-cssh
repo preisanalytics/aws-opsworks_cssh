@@ -25,7 +25,7 @@ opts = OptionParser.new do |opts|
 
   opts.on("-p","--private",
           "Optional. Specify the ipAddress to be public or private") do |ip|
-    options[:ip] = "private"
+    options[:force_private] = "private"
   end
 
 
@@ -43,4 +43,4 @@ end
 puts "Executing cssh for user #{options[:user]} stack #{options[:stack]} "
 
 
-Aws::OpsworksCssh.start_opsworks_cssh(options[:stack],options[:user])
+Aws::OpsworksCssh.start_opsworks_cssh(options[:stack],options[:user],options[:force_private])

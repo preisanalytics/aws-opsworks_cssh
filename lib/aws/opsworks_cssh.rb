@@ -6,7 +6,7 @@ module Aws
     
     
 
-    def self.start_opsworks_cssh(stack_name,user)
+    def self.start_opsworks_cssh(stack_name,user,force_private)
 
     	@resp_instances
       options = {}
@@ -26,7 +26,13 @@ module Aws
       end
 
 
-      dns = @resp_instances.instances.map { |instance| instance.public_ip.nil? ? instance.private_ip : instance.public_ip }
+      dns = @resp_instances.instances.map { |instance|
+        if force_private ==  "private"
+          instance.private_ip || instance.public_ip
+        else
+          instance.public_ip || instance.private_ip
+        end
+      }
 
       cssh = (/darwin/ =~ RUBY_PLATFORM) ? 'csshX' : 'cssh'
 
